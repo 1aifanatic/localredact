@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.coverage
+.env
+.env.*
+.pypirc
+.pytest_cache/
+.ruff_cache/
+.venv*/
+.vscode/
+build/
+dist/
+htmlcov/
+output/
+tmp/
+*.pem
+*.key
+*.redacted.pdf
+*.redaction-report.json
+
+# Local release-planning evidence; public-facing policy lives in repository docs.
+docs/publishing-research.md

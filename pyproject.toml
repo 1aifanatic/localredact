@@ -1,0 +1,93 @@
+[build-system]
+requires = ["hatchling>=1.32,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "localredact"
+version = "0.1.0"
+description = "Private, local PDF redaction driven by plain-English instructions"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE"]
+authors = [{ name = "Naveen" }]
+maintainers = [{ name = "Naveen" }]
+keywords = ["pdf", "redaction", "privacy", "pii", "local-first"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: GNU Affero General Public License v3",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Security",
+  "Topic :: Text Processing",
+]
+dependencies = ["PyMuPDF>=1.24,<2"]
+
+[project.urls]
+Homepage = "https://github.com/1aifanatic/localredact"
+Documentation = "https://github.com/1aifanatic/localredact#readme"
+Repository = "https://github.com/1aifanatic/localredact"
+Issues = "https://github.com/1aifanatic/localredact/issues"
+Changelog = "https://github.com/1aifanatic/localredact/blob/main/CHANGELOG.md"
+Security = "https://github.com/1aifanatic/localredact/security/policy"
+
+[project.optional-dependencies]
+server = [
+  "fastapi>=0.115,<1",
+  "python-multipart>=0.0.18,<1",
+  "uvicorn>=0.32,<1",
+]
+dev = [
+  "build>=1.2,<2",
+  "check-wheel-contents>=0.6,<1",
+  "cryptography>=44,<48",
+  "fastapi>=0.115,<1",
+  "httpx>=0.28,<1",
+  "Pillow>=10,<13",
+  "python-multipart>=0.0.18,<1",
+  "pypdf>=5,<7",
+  "pytest>=8.3,<10",
+  "reportlab>=4,<6",
+  "ruff>=0.9,<1",
+  "twine>=7,<8",
+  "uvicorn>=0.32,<1",
+]
+
+[project.scripts]
+localredact = "localredact.cli:main"
+localredact-plan = "localredact.cli:plan_main"
+localredact-server = "localredact.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/localredact"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/tests",
+  "/README.md",
+  "/LICENSE",
+  "/pyproject.toml",
+  "/CHANGELOG.md",
+  "/CONTRIBUTING.md",
+  "/SECURITY.md",
+  "/THIRD_PARTY_LICENSES.md",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]
