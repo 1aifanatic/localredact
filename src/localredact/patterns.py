@@ -90,7 +90,7 @@ PATTERNS: tuple[PatternSpec, ...] = (
     PatternSpec(
         "email",
         r"(?<![\w.+-])[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@"
-        r"(?:[A-Z0-9-]+\.)+[A-Z]{2,63}(?![\w.-])",
+        r"(?:[A-Z0-9-]+\.)+[A-Z]{2,63}(?![\w-]|\.[A-Z0-9-])",
     ),
     PatternSpec(
         "phone",

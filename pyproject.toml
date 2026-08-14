@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "localredact"
-version = "0.1.0"
+version = "0.1.1"
 description = "Private, local PDF redaction driven by plain-English instructions"
 readme = "README.md"
 requires-python = ">=3.10"

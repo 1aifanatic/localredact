@@ -27,7 +27,7 @@ def create_app(*, max_upload_mb: int = 50):
 
     app = FastAPI(
         title="LocalRedact",
-        version="0.1.0",
+        version="0.1.1",
         description="Loopback-first local PDF redaction. No outbound document transfer.",
         contact={"name": "LocalRedact maintainers", "url": f"{SOURCE_URL}/issues"},
         license_info={"name": "AGPL-3.0-only", "identifier": "AGPL-3.0-only"},

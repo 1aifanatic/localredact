@@ -69,6 +69,21 @@ def test_real_redaction_removes_text_and_sanitizes_extras(tmp_path: Path):
         assert document.embfile_names() == []
 
 
+def test_email_before_sentence_punctuation_is_redacted(tmp_path: Path):
+    source = make_pdf(
+        tmp_path / "punctuated-emails.pdf",
+        [["Contact VendorManagement@b1bank.com.", "Write to LegalNotice@fisglobal.com."]],
+    )
+    output = tmp_path / "punctuated-emails.redacted.pdf"
+
+    result = redact(source, "Redact email addresses", output)
+
+    text = pdf_text(output)[0]
+    assert "VendorManagement@b1bank.com" not in text
+    assert "LegalNotice@fisglobal.com" not in text
+    assert result.redaction_count == 2
+
+
 def test_page_scope_leaves_other_pages_untouched_and_verifies(tmp_path: Path):
     source = make_pdf(
         tmp_path / "pages.pdf",

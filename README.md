@@ -208,7 +208,7 @@ python -m pip install -e ".[dev]"
 pytest
 ruff check .
 python -m build
-python -m pip install --force-reinstall dist/localredact-0.1.0-py3-none-any.whl
+python -m pip install --force-reinstall dist/localredact-0.1.1-py3-none-any.whl
 ```
 
 The end-to-end tests generate PDFs locally and assert that sensitive content is

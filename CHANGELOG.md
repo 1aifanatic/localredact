@@ -2,6 +2,13 @@
 
 All notable changes to LocalRedact are recorded here.
 
+## [0.1.1] - 2026-08-14
+
+### Fixed
+
+- Detect email addresses followed by a sentence-ending period while still rejecting
+  partial matches from malformed domain suffixes.
+
 ## [0.1.0] - 2026-08-14
 
 ### Added
@@ -14,4 +21,5 @@ All notable changes to LocalRedact are recorded here.
 - Local OCR integration for scanned PDFs when Tesseract is installed.
 - Unit, integration, and synthetic-PDF regression coverage.
 
+[0.1.1]: https://github.com/1aifanatic/localredact/releases/tag/v0.1.1
 [0.1.0]: https://github.com/1aifanatic/localredact/releases/tag/v0.1.0

@@ -20,6 +20,22 @@ def test_common_patterns_and_contextual_identifiers():
     assert ("passport", "X1234567") in found
 
 
+def test_email_excludes_sentence_punctuation_after_top_level_domain():
+    text = (
+        "Contact VendorManagement@b1bank.com. "
+        "Escalate to LegalNotice@fisglobal.com, or legal@b1bank.com;"
+    )
+
+    found = values(text, "email")
+
+    assert found == [
+        ("email", "VendorManagement@b1bank.com"),
+        ("email", "LegalNotice@fisglobal.com"),
+        ("email", "legal@b1bank.com"),
+    ]
+    assert values("Do not match a valid-looking prefix: admin@example.com.x", "email") == []
+
+
 def test_credit_card_requires_luhn_checksum():
     text = "Valid 4111 1111 1111 1111; invalid 4111 1111 1111 1112"
 
